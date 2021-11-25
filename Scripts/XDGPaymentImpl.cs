@@ -43,7 +43,6 @@ namespace XD.Intl.Payment
                 .Service(XDG_PAYMENT_SERVICE)
                 .Method("queryWithProductIds")
                 .Args(dic)
-                .OnceTime(true)
                 .Callback(true)
                 .CommandBuilder();
 
@@ -110,7 +109,6 @@ namespace XD.Intl.Payment
             var command = new Command.Builder()
                 .Service(XDG_PAYMENT_SERVICE)
                 .Method("queryRestoredPurchases")
-                .OnceTime(true)
                 .Callback(true)
                 .CommandBuilder();
             EngineBridge.GetInstance().CallHandler(command,
@@ -159,7 +157,6 @@ namespace XD.Intl.Payment
             var command = new Command.Builder()
                 .Service(XDG_PAYMENT_SERVICE)
                 .Method("checkRefundStatus")
-                .OnceTime(true)
                 .Callback(true)
                 .CommandBuilder();
 
@@ -175,7 +172,6 @@ namespace XD.Intl.Payment
             var command = new Command.Builder()
                 .Service(XDG_PAYMENT_SERVICE)
                 .Method("checkRefundStatusWithUI")
-                .OnceTime(true)
                 .Callback(true)
                 .CommandBuilder();
 
