@@ -378,4 +378,77 @@ namespace XD.Intl.Payment
             channelType = SafeDictionary.GetValue<int>(dic, "channelType");
         }
     }
+
+    public class XDGInlinePayResult
+    {
+        public int code = -1;
+        public string message = "";
+        
+        public XDGInlinePayResult(string jsonStr)
+        {
+            if (!(Json.Deserialize(jsonStr) is Dictionary<string, object> dic)) return;
+            code = SafeDictionary.GetValue<int>(dic, "code");
+            message = SafeDictionary.GetValue<string>(dic, "message");
+        }
+
+        public XDGInlinePayResult(int code, string message)
+        {
+            this.code = code;
+            this.message = message;
+        }
+    }
+
+
+    public class ProductSkuWrapper
+    {
+        public XDGError xdgError;
+
+        public List<ProductSkuInfo> skuList;
+        
+        public ProductSkuWrapper(string jsonStr)
+        {
+            var dic = Json.Deserialize(jsonStr) as Dictionary<string, object>;
+            var errorDic = SafeDictionary.GetValue<Dictionary<string, object>>(dic, "error");
+            if (errorDic != null)
+            {
+                xdgError = new XDGError(errorDic);
+            }
+
+            var list = SafeDictionary.GetValue<List<object>>(dic, "products");
+            if (list == null) return;
+            skuList = new List<ProductSkuInfo>();
+            foreach (var skuDetail in list)
+            {
+                var innerDic = skuDetail as Dictionary<string, object>;
+                var skuDetailBean = new ProductSkuInfo(innerDic);
+                skuList.Add(skuDetailBean);
+            }
+        }
+
+    }
+
+    public class ProductSkuInfo
+    {
+        public string channelSkuCode; // 渠道 sku
+        public string costPrice; // 原价
+        public string currency; // 货币
+        public string desc; // 商品描述
+        public string productSkuCode; // 商品 sku
+        public string productSkuName; // 商品 sku 的名称
+        public string region; // 国家/地区
+        public string salePrice; // 现价
+
+        public ProductSkuInfo(Dictionary<string, object> dic)
+        {
+            if (dic == null) return;
+            channelSkuCode = SafeDictionary.GetValue<string>(dic, "channelSkuCode");
+            costPrice = SafeDictionary.GetValue<string>(dic, "costPrice");
+            currency = SafeDictionary.GetValue<string>(dic, "currency");
+            desc = SafeDictionary.GetValue<string>(dic, "desc");
+            productSkuCode = SafeDictionary.GetValue<string>(dic, "productSkuCode");
+            productSkuName = SafeDictionary.GetValue<string>(dic, "productSkuName");
+            region = SafeDictionary.GetValue<string>(dic, "region");
+            salePrice = SafeDictionary.GetValue<string>(dic, "salePrice");
+        }
+    }
 }

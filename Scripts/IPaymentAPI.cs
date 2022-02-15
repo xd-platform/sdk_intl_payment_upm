@@ -13,5 +13,8 @@ namespace XD.Intl.Payment
         void RestorePurchase(string purchaseToken, string orderId, string productId, string roleId, string serverId, string ext, Action<XDGOrderInfoWrapper> callback);
         void CheckRefundStatus(Action<XDGRefundResultWrapper> callback);
         void CheckRefundStatusWithUI(Action<XDGRefundResultWrapper> callback);
+        
+        void InlinePay(string orderId, string productId, string productName, string region, string serverId,
+            string roleId, string ext, Action<XDGInlinePayResult> callback);
     }
 }
