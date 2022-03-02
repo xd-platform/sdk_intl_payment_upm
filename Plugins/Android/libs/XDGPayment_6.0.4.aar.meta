@@ -1,0 +1,36 @@
+fileFormatVersion: 2
+<<<<<<< HEAD:Assets/XD/Intl/Payment/Plugins/Android/libs/XDGPayment_6.1.0.aar.meta
+guid: bee73c04f10354625a5e4ec742ccc9a6
+=======
+guid: 1f8df63d835e6431f8cc7da20675666c
+>>>>>>> 6.0.2-fp:Assets/XD/Intl/Payment/Plugins/Android/libs/XDGPayment_6.0.4.aar.meta
+PluginImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  iconMap: {}
+  executionOrder: {}
+  defineConstraints: []
+  isPreloaded: 0
+  isOverridable: 0
+  isExplicitlyReferenced: 0
+  validateReferences: 1
+  platformData:
+  - first:
+      Android: Android
+    second:
+      enabled: 1
+      settings: {}
+  - first:
+      Any: 
+    second:
+      enabled: 0
+      settings: {}
+  - first:
+      Editor: Editor
+    second:
+      enabled: 0
+      settings:
+        DefaultValueInitialized: true
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
