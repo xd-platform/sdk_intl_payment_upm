@@ -43,15 +43,15 @@ namespace XD.Intl.Payment
             XDGPaymentImpl.GetInstance().CheckRefundStatusWithUI(callback);
         }
         
-        public static void InlinePay(string orderId, string productId, string productName, string region, string serverid,
-            string roleId, string ext, Action<XDGInlinePayResult> callback)
-        {
-            XDGPaymentImpl.GetInstance().InlinePay(orderId, productId, productName, region, serverid, roleId, ext, callback);
-        }
-
-        public static void QueryProductList(string[] productIds, Action<ProductSkuWrapper> callback)
-        {
-            XDGPaymentImpl.GetInstance().QueryProductList(productIds, callback);
-        }
+        // public static void InlinePay(string orderId, string productId, string productName, string region, string serverid,
+        //     string roleId, string ext, Action<XDGInlinePayResult> callback)
+        // {
+        //     XDGPaymentImpl.GetInstance().InlinePay(orderId, productId, productName, region, serverid, roleId, ext, callback);
+        // }
+        //
+        // public static void QueryProductList(string[] productIds, Action<ProductSkuWrapper> callback)
+        // {
+        //     XDGPaymentImpl.GetInstance().QueryProductList(productIds, callback);
+        // }
     }
 }

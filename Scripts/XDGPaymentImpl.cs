@@ -187,52 +187,52 @@ namespace XD.Intl.Payment
             string roleId,
             string ext, Action<XDGInlinePayResult> callback)
         {
-            var dic = new Dictionary<string, object>
-            {
-                { "orderId", orderId },
-                { "productId", productId },
-                { "productName", productName },
-                { "region", region },
-                { "serverId", serverId },
-                { "roleId", roleId },
-                { "ext", ext }
-            };
-            var command = new Command(XDG_PAYMENT_SERVICE, "inlinePay", true, dic);
-            EngineBridge.GetInstance().CallHandler(command, (result) =>
-            {
-                Debug.Log("InlinePay bridge result:" + result.ToJSON());
-                if (!XDGTool.checkResultSuccess(result))
-                {
-                    var payResult = new XDGInlinePayResult(GlobalUnKnowError.UN_KNOW,
-                        $"InlinePay Failed:{result.message}");
-
-                    callback(payResult);
-                    return;
-                }
-
-                callback(new XDGInlinePayResult(result.content));
-            });
+            // var dic = new Dictionary<string, object>
+            // {
+            //     { "orderId", orderId },
+            //     { "productId", productId },
+            //     { "productName", productName },
+            //     { "region", region },
+            //     { "serverId", serverId },
+            //     { "roleId", roleId },
+            //     { "ext", ext }
+            // };
+            // var command = new Command(XDG_PAYMENT_SERVICE, "inlinePay", true, dic);
+            // EngineBridge.GetInstance().CallHandler(command, (result) =>
+            // {
+            //     Debug.Log("InlinePay bridge result:" + result.ToJSON());
+            //     if (!XDGTool.checkResultSuccess(result))
+            //     {
+            //         var payResult = new XDGInlinePayResult(GlobalUnKnowError.UN_KNOW,
+            //             $"InlinePay Failed:{result.message}");
+            //
+            //         callback(payResult);
+            //         return;
+            //     }
+            //
+            //     callback(new XDGInlinePayResult(result.content));
+            // });
         }
 
         public void QueryProductList(string[] productIds, Action<ProductSkuWrapper> callback)
         {
-            var dic = new Dictionary<string, object>
-            {
-                { "productIds", productIds }
-            };
-
-            var command = new Command.Builder()
-                .Service(XDG_PAYMENT_SERVICE)
-                .Method("queryProductList")
-                .Args(dic)
-                .Callback(true)
-                .CommandBuilder();
-
-            EngineBridge.GetInstance().CallHandler(command, result =>
-            {
-                XDGTool.Log("queryWithProductIds 方法结果: " + result.ToJSON());
-                callback(new ProductSkuWrapper(result.content));
-            });
+            // var dic = new Dictionary<string, object>
+            // {
+            //     { "productIds", productIds }
+            // };
+            //
+            // var command = new Command.Builder()
+            //     .Service(XDG_PAYMENT_SERVICE)
+            //     .Method("queryProductList")
+            //     .Args(dic)
+            //     .Callback(true)
+            //     .CommandBuilder();
+            //
+            // EngineBridge.GetInstance().CallHandler(command, result =>
+            // {
+            //     XDGTool.Log("queryWithProductIds 方法结果: " + result.ToJSON());
+            //     callback(new ProductSkuWrapper(result.content));
+            // });
         }
     }
 }
