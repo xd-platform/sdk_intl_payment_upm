@@ -81,12 +81,14 @@ namespace XD.Intl.Payment
                 });
         }
 
-        public void PayWithWeb(string serverId, string roleId, Action<XDGError> callback)
+        public void PayWithWeb(string serverId, string roleId, string productId, string extras, Action<XDGError> callback)
         {
             var dic = new Dictionary<string, object>
             {
                 { "serverId", serverId },
-                { "roleId", roleId }
+                { "roleId", roleId },
+                { "productId", productId },
+                { "extras", extras },
             };
             var command = new Command.Builder()
                 .Service(XDG_PAYMENT_SERVICE)
